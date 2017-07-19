@@ -1,0 +1,8 @@
+<google/protobuf/extension_set.h
+<google/protobuf/generated_message_table_driven.h
+<google/protobuf/io/zero_copy_stream_impl_lite.h
+<google/protobuf/metadata_lite.h
+<google/protobuf/repeated_field.h
+<google/protobuf/stubs/type_traits.h
+<google/protobuf/wire_format_lite.h
+<google/protobuf/wire_format_lite_inl.h

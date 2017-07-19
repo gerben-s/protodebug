@@ -1,0 +1,9 @@
+<algorithm
+<google/protobuf/arenastring.h
+<google/protobuf/io/coded_stream.h
+<google/protobuf/message_lite.h
+<google/protobuf/repeated_field.h
+<google/protobuf/stubs/common.h
+<google/protobuf/stubs/logging.h
+<google/protobuf/wire_format_lite.h
+<string

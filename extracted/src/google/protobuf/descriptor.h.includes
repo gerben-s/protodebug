@@ -1,0 +1,8 @@
+<google/protobuf/stubs/common.h
+<google/protobuf/stubs/mutex.h
+<google/protobuf/stubs/once.h
+<google/protobuf/stubs/shared_ptr.h
+<memory
+<set
+<string
+<vector

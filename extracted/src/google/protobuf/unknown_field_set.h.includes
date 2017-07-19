@@ -1,0 +1,6 @@
+<assert.h
+<google/protobuf/generated_message_util.h
+<google/protobuf/stubs/common.h
+<google/protobuf/stubs/logging.h
+<string
+<vector

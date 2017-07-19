@@ -1,0 +1,798 @@
+syntax = "proto2";
+
+package doxygen;
+
+message Doxygen {
+  // Attributes
+  required string version = 2;
+  // Elements
+  repeated Compounddef compounddef = 3;
+}
+
+message Compounddef {
+  // Attributes
+  optional string id = 2;
+  optional CompoundKind kind = 3;
+  optional ProtectionKind prot = 4;
+  // Elements
+  optional string compoundname = 5;
+  optional string title = 6;
+  repeated CompoundRef basecompoundref = 7;
+  repeated CompoundRef derivedcompoundref = 8;
+  repeated Inc includes = 9;
+  repeated Inc includedby = 10;
+  optional Graph incdepgraph = 11;
+  optional Graph invincdepgraph = 12;
+  repeated Ref innerdir = 13;
+  repeated Ref innerfile = 14;
+  repeated Ref innerclass = 15;
+  repeated Ref innernamespace = 16;
+  repeated Ref innerpage = 17;
+  repeated Ref innergroup = 18;
+  optional Templateparamlist templateparamlist = 19;
+  repeated Sectiondef sectiondef = 20;
+  optional Description briefdescription = 21;
+  optional Description detaileddescription = 22;
+  optional Graph inheritancegraph = 23;
+  optional Graph collaborationgraph = 24;
+  optional Listing programlisting = 25;
+  optional Location location = 26;
+  optional Listofallmembers listofallmembers = 27;
+  optional bool abstract = 28;
+  optional string language = 29;
+}
+
+message Listofallmembers {
+  // Attributes
+  // Elements
+  repeated MemberRef member = 2;
+}
+
+message MemberRef {
+  // Attributes
+  optional string refid = 2;
+  optional ProtectionKind prot = 3;
+  optional VirtualKind virt = 4;
+  optional string ambiguityscope = 5;
+  // Elements
+  optional string scope = 6;
+  optional string name = 7;
+}
+
+message CompoundRef {
+  optional string text = 1;
+  // Attributes
+  optional string refid = 2;
+  optional ProtectionKind prot = 3;
+  optional VirtualKind virt = 4;
+  // Elements
+}
+
+message Reimplement {
+  optional string text = 1;
+  // Attributes
+  optional string refid = 2;
+  // Elements
+}
+
+message Inc {
+  optional string text = 1;
+  // Attributes
+  optional string refid = 2;
+  optional bool local = 3;
+  // Elements
+}
+
+message Ref {
+  optional string text = 1;
+  // Attributes
+  optional string refid = 2;
+  optional ProtectionKind prot = 3;
+  // Elements
+}
+
+message RefText {
+  optional string text = 1;
+  // Attributes
+  optional string refid = 2;
+  optional RefKind kindref = 3;
+  optional string external = 4;
+  optional string tooltip = 5;
+  // Elements
+}
+
+message Sectiondef {
+  // Attributes
+  optional SectionKind kind = 2;
+  // Elements
+  optional string header = 3;
+  optional Description description = 4;
+  repeated Memberdef memberdef = 5;
+}
+
+message Memberdef {
+  // Attributes
+  optional MemberKind kind = 2;
+  optional string id = 3;
+  optional ProtectionKind prot = 4;
+  optional bool static = 5;
+  optional bool const = 6;
+  optional bool explicit = 7;
+  optional bool inline = 8;
+  optional VirtualKind virt = 9;
+  optional bool volatile = 10;
+  optional bool mutable = 11;
+  optional bool readable = 12;
+  optional bool writable = 13;
+  // Elements
+  optional Templateparamlist templateparamlist = 14;
+  optional LinkedText type = 15;
+  optional string definition = 16;
+  optional string argsstring = 17;
+  optional string name = 18;
+  optional string read = 19;
+  optional string write = 20;
+  optional string bitfield = 21;
+  repeated Reimplement reimplements = 22;
+  repeated Reimplement reimplementedby = 23;
+  repeated Param param = 24;
+  repeated Enumvalue enumvalue = 25;
+  optional LinkedText initializer = 26;
+  optional LinkedText exceptions = 27;
+  optional Description briefdescription = 28;
+  optional Description detaileddescription = 29;
+  optional Description inbodydescription = 30;
+  optional Location location = 31;
+  repeated Reference references = 32;
+  repeated Reference referencedby = 33;
+}
+
+message Description {
+  optional string text = 1;
+  // Attributes
+  // Elements
+  optional string title = 2;
+  repeated Para para = 3;
+  repeated Sect1 sect1 = 4;
+  optional Internal internal = 5;
+}
+
+message Enumvalue {
+  optional string text = 1;
+  // Attributes
+  optional string id = 2;
+  optional ProtectionKind prot = 3;
+  // Elements
+  optional string name = 4;
+  optional LinkedText initializer = 5;
+  optional Description briefdescription = 6;
+  optional Description detaileddescription = 7;
+}
+
+message Templateparamlist {
+  // Attributes
+  // Elements
+  repeated Param param = 2;
+}
+
+message Param {
+  // Attributes
+  // Elements
+  optional LinkedText type = 2;
+  optional string declname = 3;
+  optional string defname = 4;
+  optional string array = 5;
+  optional LinkedText defval = 6;
+  optional Description briefdescription = 7;
+}
+
+message LinkedTextPiece {
+  // Elements
+  // (Only one will be filled in.)
+  optional string text = 1;
+  optional RefText ref = 3;
+}
+
+message LinkedText {
+  // Attributes
+  // Elements
+  repeated LinkedTextPiece element = 2;
+}
+
+message Graph {
+  // Attributes
+  // Elements
+  repeated Node node = 2;
+}
+
+message Node {
+  // Attributes
+  optional string id = 2;
+  // Elements
+  optional string label = 3;
+  optional Link link = 4;
+  repeated Childnode childnode = 5;
+}
+
+message Childnode {
+  // Attributes
+  optional string refid = 2;
+  optional GraphRelation relation = 3;
+  // Elements
+  repeated string edgelabel = 4;
+}
+
+message Link {
+  // Attributes
+  optional string refid = 2;
+  optional string external = 3;
+  // Elements
+}
+
+message Listing {
+  // Attributes
+  // Elements
+  repeated Codeline codeline = 2;
+}
+
+message Codeline {
+  // Attributes
+  optional int32 lineno = 2;
+  optional string refid = 3;
+  optional RefKind refkind = 4;
+  optional bool external = 5;
+  // Elements
+  repeated Highlight highlight = 6;
+}
+
+message HighlightPiece {
+  // Elements
+  // (Only one will be filled in.)
+  optional string text = 1;
+  optional string sp = 2;
+  optional RefText ref = 3;
+}
+
+message Highlight {
+  // Attributes
+  optional HighlightClass class = 2;
+  // Elements
+  repeated HighlightPiece element = 1;
+}
+
+message Reference {
+  optional string text = 1;
+  // Attributes
+  optional string refid = 2;
+  optional string compoundref = 3;
+  optional int32 startline = 4;
+  optional int32 endline = 5;
+  // Elements
+}
+
+message Location {
+  // Attributes
+  optional string file = 2;
+  optional int32 line = 3;
+  optional string bodyfile = 4;
+  optional int32 bodystart = 5;
+  optional int32 bodyend = 6;
+  optional int32 column = 7;
+  // Elements
+}
+
+message Sect1 {
+  optional string text = 1;
+  // Attributes
+  optional string id = 2;
+  // Elements
+  optional string title = 3;
+  repeated Para para = 4;
+  repeated Sect2 sect2 = 5;
+  optional InternalS1 internal = 6;
+}
+
+message Sect2 {
+  optional string text = 1;
+  // Attributes
+  optional string id = 2;
+  // Elements
+  optional string title = 3;
+  repeated Para para = 4;
+  repeated Sect3 sect3 = 5;
+  optional InternalS2 internal = 6;
+}
+
+message Sect3 {
+  optional string text = 1;
+  // Attributes
+  optional string id = 2;
+  // Elements
+  optional string title = 3;
+  repeated Para para = 4;
+  repeated Sect4 sect4 = 5;
+  optional InternalS3 internal = 6;
+}
+
+message Sect4 {
+  optional string text = 1;
+  // Attributes
+  optional string id = 2;
+  // Elements
+  optional string title = 3;
+  repeated Para para = 4;
+  optional InternalS4 internal = 5;
+}
+
+message Internal {
+  optional string text = 1;
+  // Attributes
+  // Elements
+  repeated Para para = 2;
+  repeated Sect1 sect1 = 3;
+}
+
+message InternalS1 {
+  optional string text = 1;
+  // Attributes
+  // Elements
+  repeated Para para = 2;
+  repeated Sect2 sect2 = 3;
+}
+
+message InternalS2 {
+  optional string text = 1;
+  // Attributes
+  // Elements
+  repeated Para para = 2;
+  repeated Sect3 sect3 = 3;
+}
+
+message InternalS3 {
+  optional string text = 1;
+  // Attributes
+  // Elements
+  repeated Para para = 2;
+  repeated Sect4 sect3 = 3;
+}
+
+message InternalS4 {
+  optional string text = 1;
+  // Attributes
+  // Elements
+  repeated Para para = 2;
+}
+
+message TitleCmdGroup {
+  optional string text = 1;
+  // Attributes
+  // Elements
+  // (Only one will be filled in.)
+  optional URLLink ulink = 2;
+  optional Markup bold = 3;
+  optional Markup emphasis = 4;
+  optional Markup computeroutput = 5;
+  optional Markup subscript = 6;
+  optional Markup superscript = 7;
+  optional Markup center = 8;
+  optional Markup small = 9;
+  optional string htmlonly = 10;
+  optional string latexonly = 11;
+  optional string dot = 12;
+  optional Anchor anchor = 13;
+  optional Formula formula = 14;
+  optional FormattedRefText ref = 15;
+  optional Empty copy = 16;
+  optional Empty trademark = 17;
+  optional Empty registered = 18;
+  optional Empty lsquo = 19;
+  optional Empty rsquo = 20;
+  optional Empty ldquo = 21;
+  optional Empty rdquo = 22;
+  optional Empty ndash = 23;
+  optional Empty mdash = 24;
+  optional Char umlaut = 25;
+  optional Char acute = 26;
+  optional Char grave = 27;
+  optional Char circ = 28;
+  optional Char slash = 29;
+  optional Char tilde = 30;
+  optional Char cedil = 31;
+  optional Char ring = 32;
+  optional Empty szlig = 33;
+  optional Empty nonbreakablespace = 34;
+}
+
+message Title {
+  // Attributes
+  // Elements
+  repeated TitleCmdGroup element = 1;
+}
+
+message CmdGroup {
+  // Attributes
+  // Elements
+  // (Only one will be filled in.)
+  optional TitleCmdGroup more = 1;
+  optional Empty linebreak = 2;
+  optional Empty hruler = 3;
+  optional Markup preformatted = 4;
+  optional Listing programlisting = 5;
+  optional string verbatim = 6;
+  optional IndexEntry indexentry = 7;
+  optional List orderedlist = 8;
+  optional List itemizedlist = 9;
+  optional SimpleSect simplesect = 10;
+  optional Title title = 11;
+  optional VariableList variablelist = 12;
+  optional Table table = 13;
+  optional Heading heading = 14;
+  optional Image image = 15;
+  optional DotFile dotfile = 16;
+  optional TocList toclist = 17;
+  optional Language language = 18;
+  optional ParamList parameterlist = 19;
+  optional XRefSect xrefsect = 20;
+  optional Copy copydoc = 21;
+}
+
+message Para {
+  // Attributes
+  // Elements
+  repeated CmdGroup element = 1;
+}
+
+message Markup {
+  // Attributes
+  // Elements
+  repeated CmdGroup element = 1;
+}
+
+message URLLink {
+  // Attributes
+  optional string url = 2;
+  // Elements
+  repeated TitleCmdGroup element = 1;
+}
+
+message Anchor {
+  optional string text = 1;
+  // Attributes
+  optional string id = 2;
+  // Elements
+}
+
+message Formula {
+  optional string text = 1;
+  // Attributes
+  optional string id = 2;
+  // Elements
+}
+
+message IndexEntry {
+  // Attributes
+  // Elements
+  optional string primaryie = 2;
+  optional string secondaryie = 3;
+}
+
+message List {
+  // Attributes
+  // Elements
+  repeated ListItem listitem = 2;
+}
+
+message ListItem {
+  // Attributes
+  // Elements
+  repeated Para para = 2;
+}
+
+message SimpleSect {
+  // Attributes
+  optional SimpleSectKind kind = 2;
+  // Elements
+  optional Title title = 3;
+  repeated Para para = 4;
+}
+
+message VarListEntry {
+  // Attributes
+  // Elements
+  optional Title term = 2;
+}
+
+message VariableListGroup {
+  // Attributes
+  // Elements
+  optional VarListEntry varlistentry = 2;
+  optional ListItem listitem = 3;
+}
+
+message VariableList {
+  // Attributes
+  // Elements
+  repeated VariableListGroup element = 1;
+}
+
+message FormattedRefText {
+  // Attributes
+  optional string refid = 2;
+  optional RefKind kindref = 3;
+  optional string external = 4;
+  // Elements
+  repeated TitleCmdGroup element = 1;
+}
+
+message Table {
+  // Attributes
+  optional int32 rows = 2;
+  optional int32 cols = 3;
+  // Elements
+  repeated Row row = 4;
+  optional Caption caption = 5;
+}
+
+message Row {
+  // Attributes
+  // Elements
+  repeated Entry entry = 2;
+}
+
+message Entry {
+  // Attributes
+  optional bool thead = 2;
+  // Elements
+  repeated Para para = 3;
+}
+
+message Caption {
+  // Attributes
+  // Elements
+  repeated TitleCmdGroup element = 1;
+}
+
+message Heading {
+  // Attributes
+  optional int32 level = 2;
+  // Elements
+  repeated TitleCmdGroup element = 1;
+}
+
+message Image {
+  // Attributes
+  optional ImageKind type = 2;
+  optional string name = 3;
+  optional string width = 4;
+  optional string height = 5;
+  // Elements
+  repeated TitleCmdGroup element = 1;
+}
+
+message DotFile {
+  // Attributes
+  optional string name = 2;
+  // Elements
+  repeated TitleCmdGroup element = 1;
+}
+
+message TocItem {
+  // Attributes
+  optional string id = 2;
+  // Elements
+  repeated TitleCmdGroup element = 1;
+}
+
+message TocList {
+  // Attributes
+  // Elements
+  repeated TocItem tocitem = 2;
+}
+
+message Language {
+  // Attributes
+  optional string langid = 2;
+  // Elements
+  repeated Para para = 3;
+}
+
+message ParamList {
+  // Attributes
+  optional ParamListKind kind = 2;
+  // Elements
+  repeated ParamListItem parameteritem = 3;
+}
+
+message ParamListItem {
+  // Attributes
+  // Elements
+  repeated ParamNameList parameternamelist = 2;
+  optional Description parameterdescription = 3;
+}
+
+message ParamNameList {
+  // Attributes
+  // Elements
+  repeated ParamName parametername = 2;
+}
+
+message ParamName {
+  // Attributes
+  optional ParamDir direction = 2;
+  // Elements
+  repeated LinkedTextPiece element = 3;
+}
+
+message XRefSect {
+  // Attributes
+  optional string id = 2;
+  // Elements
+  repeated string xreftitle = 3;
+  optional Description xrefdescription = 4;
+}
+
+message Copy {
+  // Attributes
+  optional string link = 2;
+  // Elements
+  repeated Para para = 3;
+  repeated Sect1 sect1 = 4;
+  optional Internal internal = 5;
+}
+
+message Char {
+  // Attributes
+  optional string char = 2;
+  // Elements
+}
+
+message Empty {
+  // Attributes
+  // Elements
+}
+
+enum GraphRelation {
+  GRAPHRELATION_INCLUDE = 1;
+  GRAPHRELATION_USAGE = 2;
+  GRAPHRELATION_TEMPLATE_INSTANCE = 3;
+  GRAPHRELATION_PUBLIC_INHERITANCE = 4;
+  GRAPHRELATION_PROTECTED_INHERITANCE = 5;
+  GRAPHRELATION_PRIVATE_INHERITANCE = 6;
+}
+
+enum RefKind {
+  REFKIND_COMPOUND = 1;
+  REFKIND_MEMBER = 2;
+}
+
+enum MemberKind {
+  MEMBERKIND_DEFINE = 1;
+  MEMBERKIND_PROPERTY = 2;
+  MEMBERKIND_EVENT = 3;
+  MEMBERKIND_VARIABLE = 4;
+  MEMBERKIND_TYPEDEF = 5;
+  MEMBERKIND_ENUM = 6;
+  MEMBERKIND_FUNCTION = 7;
+  MEMBERKIND_SIGNAL = 8;
+  MEMBERKIND_PROTOTYPE = 9;
+  MEMBERKIND_FRIEND = 10;
+  MEMBERKIND_DCOP = 11;
+  MEMBERKIND_SLOT = 12;
+}
+
+enum ProtectionKind {
+  PROTECTIONKIND_PUBLIC = 1;
+  PROTECTIONKIND_PROTECTED = 2;
+  PROTECTIONKIND_PRIVATE = 3;
+  PROTECTIONKIND_PACKAGE = 4;
+}
+
+enum VirtualKind {
+  VIRTUALKIND_NON_VIRTUAL = 1;
+  VIRTUALKIND_VIRTUAL = 2;
+  VIRTUALKIND_PURE_VIRTUAL = 3;
+}
+
+enum CompoundKind {
+  COMPOUNDKIND_CLASS = 1;
+  COMPOUNDKIND_STRUCT = 2;
+  COMPOUNDKIND_UNION = 3;
+  COMPOUNDKIND_INTERFACE = 4;
+  COMPOUNDKIND_PROTOCOL = 5;
+  COMPOUNDKIND_CATEGORY = 6;
+  COMPOUNDKIND_EXCEPTION = 7;
+  COMPOUNDKIND_FILE = 8;
+  COMPOUNDKIND_NAMESPACE = 9;
+  COMPOUNDKIND_GROUP = 10;
+  COMPOUNDKIND_PAGE = 11;
+  COMPOUNDKIND_EXAMPLE = 12;
+  COMPOUNDKIND_DIR = 13;
+}
+
+enum SectionKind {
+  SECTIONKIND_USER_DEFINED = 1;
+  SECTIONKIND_PUBLIC_TYPE = 2;
+  SECTIONKIND_PUBLIC_FUNC = 3;
+  SECTIONKIND_PUBLIC_ATTRIB = 4;
+  SECTIONKIND_PUBLIC_SLOT = 5;
+  SECTIONKIND_SIGNAL = 6;
+  SECTIONKIND_DCOP_FUNC = 7;
+  SECTIONKIND_PROPERTY = 8;
+  SECTIONKIND_EVENT = 9;
+  SECTIONKIND_PUBLIC_STATIC_FUNC = 10;
+  SECTIONKIND_PUBLIC_STATIC_ATTRIB = 11;
+  SECTIONKIND_PROTECTED_TYPE = 12;
+  SECTIONKIND_PROTECTED_FUNC = 13;
+  SECTIONKIND_PROTECTED_ATTRIB = 14;
+  SECTIONKIND_PROTECTED_SLOT = 15;
+  SECTIONKIND_PROTECTED_STATIC_FUNC = 16;
+  SECTIONKIND_PROTECTED_STATIC_ATTRIB = 17;
+  SECTIONKIND_PACKAGE_TYPE = 18;
+  SECTIONKIND_PACKAGE_FUNC = 19;
+  SECTIONKIND_PACKAGE_ATTRIB = 20;
+  SECTIONKIND_PACKAGE_STATIC_FUNC = 21;
+  SECTIONKIND_PACKAGE_STATIC_ATTRIB = 22;
+  SECTIONKIND_PRIVATE_TYPE = 23;
+  SECTIONKIND_PRIVATE_FUNC = 24;
+  SECTIONKIND_PRIVATE_ATTRIB = 25;
+  SECTIONKIND_PRIVATE_SLOT = 26;
+  SECTIONKIND_PRIVATE_STATIC_FUNC = 27;
+  SECTIONKIND_PRIVATE_STATIC_ATTRIB = 28;
+  SECTIONKIND_FRIEND = 29;
+  SECTIONKIND_RELATED = 30;
+  SECTIONKIND_DEFINE = 31;
+  SECTIONKIND_PROTOTYPE = 32;
+  SECTIONKIND_TYPEDEF = 33;
+  SECTIONKIND_ENUM = 34;
+  SECTIONKIND_FUNC = 35;
+  SECTIONKIND_VAR = 36;
+}
+
+enum HighlightClass {
+  HIGHLIGHTCLASS_COMMENT = 1;
+  HIGHLIGHTCLASS_NORMAL = 2;
+  HIGHLIGHTCLASS_PREPROCESSOR = 3;
+  HIGHLIGHTCLASS_KEYWORD = 4;
+  HIGHLIGHTCLASS_KEYWORDTYPE = 5;
+  HIGHLIGHTCLASS_KEYWORDFLOW = 6;
+  HIGHLIGHTCLASS_STRINGLITERAL = 7;
+  HIGHLIGHTCLASS_CHARLITERAL = 8;
+}
+
+enum SimpleSectKind {
+  SIMPLESECTKIND_SEE = 1;
+  SIMPLESECTKIND_RETURN = 2;
+  SIMPLESECTKIND_AUTHOR = 3;
+  SIMPLESECTKIND_AUTHORS = 4;
+  SIMPLESECTKIND_VERSION = 5;
+  SIMPLESECTKIND_SINCE = 6;
+  SIMPLESECTKIND_DATE = 7;
+  SIMPLESECTKIND_NOTE = 8;
+  SIMPLESECTKIND_WARNING = 9;
+  SIMPLESECTKIND_PRE = 10;
+  SIMPLESECTKIND_POST = 11;
+  SIMPLESECTKIND_INVARIANT = 12;
+  SIMPLESECTKIND_REMARK = 13;
+  SIMPLESECTKIND_ATTENTION = 14;
+  SIMPLESECTKIND_PAR = 15;
+  SIMPLESECTKIND_RCS = 16;
+}
+
+enum ImageKind {
+  IMAGEKIND_HTML = 1;
+  IMAGEKIND_LATEX = 2;
+  IMAGEKIND_RTF = 3;
+}
+
+enum ParamListKind {
+  PARAMLISTKIND_PARAM = 1;
+  PARAMLISTKIND_RETVAL = 2;
+  PARAMLISTKIND_EXCEPTION = 3;
+}
+
+enum ParamDir {
+  PARAMDIR_IN = 1;
+  PARAMDIR_OUT = 2;
+  PARAMDIR_INOUT = 3;
+}
+

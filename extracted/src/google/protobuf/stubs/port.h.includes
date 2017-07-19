@@ -1,0 +1,12 @@
+<assert.h
+<byteswap.h
+<cstddef
+<endian.h
+<google/protobuf/stubs/platform_macros.h
+<inttypes.h
+<libkern/OSByteOrder.h
+<stdint.h
+<stdlib.h
+<string
+<string.h
+<sys/param.h

@@ -1,0 +1,8 @@
+<google/protobuf/descriptor.h
+<google/protobuf/message.h
+<google/protobuf/stubs/common.h
+<google/protobuf/stubs/shared_ptr.h
+<map
+<memory
+<string
+<vector

@@ -1,0 +1,12 @@
+<google/protobuf/repeated_field.h
+<google/protobuf/stubs/common.h
+<google/protobuf/stubs/logging.h
+<google/protobuf/stubs/shared_ptr.h
+<google/protobuf/stubs/status.h
+<google/protobuf/stubs/statusor.h
+<google/protobuf/stubs/stringpiece.h
+<google/protobuf/stubs/strutil.h
+<google/protobuf/type.pb.h
+<memory
+<string
+<utility

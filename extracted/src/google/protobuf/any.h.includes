@@ -1,0 +1,5 @@
+<google/protobuf/arenastring.h
+<google/protobuf/descriptor.h
+<google/protobuf/message.h
+<google/protobuf/stubs/common.h
+<string

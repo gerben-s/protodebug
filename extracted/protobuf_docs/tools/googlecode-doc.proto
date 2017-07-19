@@ -1,0 +1,150 @@
+syntax = "proto2";
+
+package googlecode;
+
+message Site {
+  repeated Package package = 1;
+
+  optional Index index = 2;
+}
+
+message Index {
+  message Item {
+    required string name = 1;
+    required string full_name = 2;
+    required string url = 3;
+  }
+
+  repeated Item type = 1;
+  repeated Item function = 2;
+}
+
+message Package {
+  required string name = 1;           // e.g. "google::protobuf::compiler"
+  required string short_name = 19;
+  required string anchor = 20;
+  required string url = 2;
+
+  optional string brief = 3;          // HTML
+  optional string details = 4;        // HTML
+
+  repeated File file = 5;
+}
+
+message File {
+  required string name = 1;
+  required string breakable_name = 10;
+  required string url = 2;
+  optional string brief = 3;          // HTML
+  optional string details = 4;        // HTML
+
+  required string namespace_name = 5;
+  required string package_url = 6;
+
+  required string full_path = 7;
+
+  repeated Class class_type = 8;
+
+  repeated Member member = 9;
+}
+
+message Class {
+  required string name = 1;
+  required Type scope = 2;            // e.g. "google::protobuf"
+  required string anchor = 20;
+  required string url = 3;
+  optional string brief = 4;          // HTML
+  optional string details = 5;        // HTML
+
+  optional string kind = 6 [default="class"];
+  optional Type superclass = 7;
+  repeated Type subclass = 8;
+  repeated Type inner_class = 9;
+
+  repeated Member member = 10;
+  repeated Section section = 11;
+
+  repeated TemplateParameter template_parameter = 12;
+}
+
+message Section {
+  optional string title = 1;          // HTML
+  optional string description = 2;    // HTML
+
+  repeated Member member = 3;
+}
+
+message Member {
+  required string name = 1;
+  required Type scope = 2;            // e.g. "google::protobuf::Message"
+  required string anchor = 20;
+  required string url = 3;
+  optional string brief = 4;          // HTML
+  optional string details = 5;        // HTML
+  optional bool is_protected = 6 [default=false];
+
+  // One of the following will be present.
+  optional Function function = 7;
+  optional Variable variable = 8;
+  optional Enum enum_type = 9;
+  optional Typedef typedef_type = 10;
+}
+
+message Function {
+  repeated string prefix = 1;  // virtual, static, explicit, inline
+  repeated string suffix = 2;  // const, = 0
+
+  optional Expression type = 3;
+  optional bool type_is_long = 4 [default=false];
+
+  message Parameter {
+    required Expression type = 1;
+    required string name = 2;
+    optional Expression default_value = 3;
+    optional string description = 4;  // HTML
+  }
+
+  repeated Parameter parameter = 5;
+
+  repeated TemplateParameter template_parameter = 6;
+}
+
+message Variable {
+  repeated string prefix = 1;         // static, const, mutable
+
+  optional Expression type = 2;
+  optional bool type_is_long = 3 [default=false];
+  optional Expression value = 4;
+}
+
+message Typedef {
+  optional Expression type = 1;
+  optional string function_args = 2;    // for function types only
+}
+
+message Enum {
+  message Value {
+    required string name = 1;
+    optional Expression value = 2;
+    optional string brief = 4;          // HTML
+    optional string details = 5;        // HTML
+  };
+
+  repeated Value value = 1;
+}
+
+message TemplateParameter {
+  required string name = 2;
+  optional Expression default_value = 3;
+}
+
+message Type {
+  required string name = 1;
+  required string full_name = 2;
+  optional string url = 3;
+}
+
+message Expression {
+  required string text = 1;
+  required string linked_text = 3;    // HTML
+}

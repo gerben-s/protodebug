@@ -1,0 +1,6 @@
+<google/protobuf/io/coded_stream.h
+<google/protobuf/stubs/bytestream.h
+<google/protobuf/stubs/shared_ptr.h
+<google/protobuf/util/internal/structured_objectwriter.h
+<memory
+<string

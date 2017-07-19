@@ -1,0 +1,8 @@
+<google/protobuf/descriptor.h
+<google/protobuf/message.h
+<google/protobuf/unknown_field_set.h
+<google/protobuf/util/field_comparator.h
+<map
+<set
+<string
+<vector

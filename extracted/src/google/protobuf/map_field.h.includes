@@ -1,0 +1,12 @@
+<google/protobuf/arena.h
+<google/protobuf/descriptor.h
+<google/protobuf/generated_message_reflection.h
+<google/protobuf/map_entry.h
+<google/protobuf/map_field_lite.h
+<google/protobuf/map_type_handler.h
+<google/protobuf/message.h
+<google/protobuf/repeated_field.h
+<google/protobuf/stubs/atomicops.h
+<google/protobuf/stubs/common.h
+<google/protobuf/stubs/mutex.h
+<google/protobuf/unknown_field_set.h

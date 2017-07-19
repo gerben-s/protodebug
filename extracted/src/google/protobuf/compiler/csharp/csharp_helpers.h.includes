@@ -1,0 +1,6 @@
+<google/protobuf/compiler/code_generator.h
+<google/protobuf/descriptor.h
+<google/protobuf/descriptor.pb.h
+<google/protobuf/io/printer.h
+<google/protobuf/stubs/port.h
+<string

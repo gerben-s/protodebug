@@ -1,0 +1,8 @@
+<algorithm
+<google/protobuf/message.h
+<google/protobuf/repeated_field.h
+<google/protobuf/stubs/common.h
+<google/protobuf/stubs/mutex.h
+<google/protobuf/stubs/shared_ptr.h
+<memory
+<vector

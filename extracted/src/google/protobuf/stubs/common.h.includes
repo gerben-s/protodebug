@@ -1,0 +1,16 @@
+<TargetConditionals.h
+<algorithm
+<exception
+<google/protobuf/stubs/callback.h
+<google/protobuf/stubs/logging.h
+<google/protobuf/stubs/macros.h
+<google/protobuf/stubs/mutex.h
+<google/protobuf/stubs/platform_macros.h
+<google/protobuf/stubs/port.h
+<google/protobuf/stubs/scoped_ptr.h
+<iostream
+<map
+<pthread.h
+<set
+<string
+<vector

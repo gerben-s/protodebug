@@ -1,0 +1,6 @@
+<google/protobuf/stubs/common.h
+<google/protobuf/stubs/status.h
+<google/protobuf/stubs/statusor.h
+<google/protobuf/stubs/stringpiece.h
+<google/protobuf/type.pb.h
+<google/protobuf/util/type_resolver.h

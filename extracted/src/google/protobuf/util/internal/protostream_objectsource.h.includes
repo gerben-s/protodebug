@@ -1,0 +1,12 @@
+<functional
+<google/protobuf/stubs/common.h
+<google/protobuf/stubs/hash.h
+<google/protobuf/stubs/status.h
+<google/protobuf/stubs/statusor.h
+<google/protobuf/stubs/stringpiece.h
+<google/protobuf/type.pb.h
+<google/protobuf/util/internal/object_source.h
+<google/protobuf/util/internal/object_writer.h
+<google/protobuf/util/internal/type_info.h
+<google/protobuf/util/type_resolver.h
+<string

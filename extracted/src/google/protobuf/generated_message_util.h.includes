@@ -1,0 +1,11 @@
+<assert.h
+<climits
+<google/protobuf/has_bits.h
+<google/protobuf/map_entry_lite.h
+<google/protobuf/message_lite.h
+<google/protobuf/stubs/common.h
+<google/protobuf/stubs/logging.h
+<google/protobuf/stubs/once.h
+<google/protobuf/wire_format_lite.h
+<string
+<vector

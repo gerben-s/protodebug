@@ -1,0 +1,12 @@
+<google/protobuf/stubs/callback.h
+<google/protobuf/stubs/common.h
+<google/protobuf/stubs/shared_ptr.h
+<google/protobuf/stubs/stringpiece.h
+<google/protobuf/util/internal/datapiece.h
+<google/protobuf/util/internal/object_writer.h
+<google/protobuf/util/internal/type_info.h
+<google/protobuf/util/internal/utility.h
+<google/protobuf/util/type_resolver.h
+<memory
+<stack
+<vector

@@ -1,0 +1,14 @@
+<deque
+<google/protobuf/descriptor.h
+<google/protobuf/io/coded_stream.h
+<google/protobuf/io/zero_copy_stream_impl.h
+<google/protobuf/stubs/bytestream.h
+<google/protobuf/stubs/common.h
+<google/protobuf/stubs/hash.h
+<google/protobuf/util/internal/datapiece.h
+<google/protobuf/util/internal/error_listener.h
+<google/protobuf/util/internal/structured_objectwriter.h
+<google/protobuf/util/internal/type_info.h
+<google/protobuf/util/type_resolver.h
+<string
+<vector

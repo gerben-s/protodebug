@@ -1,0 +1,8 @@
+<google/protobuf/arena.h
+<google/protobuf/descriptor.h
+<google/protobuf/message_lite.h
+<google/protobuf/stubs/common.h
+<google/protobuf/stubs/type_traits.h
+<iosfwd
+<string
+<vector
